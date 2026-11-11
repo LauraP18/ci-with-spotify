@@ -46,7 +46,7 @@ jobs:
     # TODO: Replace the run block, using `uv` to sync the environment
     - name: Install dependencies
       run: |
-        uv sync
+        uv sync 
 
     # This step runs unit tests with pytest
     # TODO: Update the run block. Use: uv run python -m pytest
@@ -62,10 +62,13 @@ jobs:
         uvx ruff check 
 
     # TODO: Add steps to run formatting steps and type checking
-    - name: Check formatting with ruff
+    - name: Format with ruff
       run: |
         uvx ruff format --check 
 
-    - name: Type checking
+    - name: Sort imports
+      run: uvx isort .--check
+
+    - name: Type check with ty
       run: |
         uvx ty check
