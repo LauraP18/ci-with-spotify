@@ -367,7 +367,11 @@ def _():
 
 
 @app.function
-def get_extremes(selection, col, defaults_if_missing):
+def get_extremes(
+    selection: list[dict[str, int | float]] | None,
+    col: str,
+    defaults_if_missing: tuple[int, int],
+) -> tuple[int | float, int | float]:
     """
     Extract the minimum and maximum values from a specific column in a selection.
 
